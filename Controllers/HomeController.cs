@@ -17,4 +17,51 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Juego(string palabraEnviada)
+    {
+        string direccion = "Index";
+        if(palabraEnviada != null)
+        {
+            Ahorcado.empezarJuego(palabraEnviada);
+        ViewBag.Largo = Ahorcado.Palabra.Length;
+        ViewBag.LetrasUsadas = Ahorcado.LetrasUsadas;
+        ViewBag.letrasEncontradas = Ahorcado.PosicionesEncontradas;
+        ViewBag.palabra = Ahorcado.Palabra;
+        ViewBag.intentos = Ahorcado.Intentos;
+        direccion = "juegoAhorcado";
+        }
+        return View(direccion);
+    }
+
+    public IActionResult letra(string letraTirada)
+    {
+        if(letraTirada != null)
+        {
+        Ahorcado.aumentarIntentos(letraTirada);
+        }
+        ViewBag.Largo = Ahorcado.Palabra.Length;
+        ViewBag.LetrasUsadas = Ahorcado.LetrasUsadas;
+        ViewBag.letrasEncontradas = Ahorcado.PosicionesEncontradas;
+        ViewBag.palabra = Ahorcado.Palabra;
+        ViewBag.intentos = Ahorcado.Intentos;
+        
+        return View("juegoAhorcado");
+    }
+    public IActionResult palabra(string palabraArriesgada)
+    {
+        string direccion = "juegoAhorcado";
+       if(Ahorcado.ArriesgarPalabra(palabraArriesgada))
+       {
+            direccion = "Arriesgar";
+            ViewBag.palabra = Ahorcado.Palabra;
+       }else{
+        ViewBag.Largo = Ahorcado.Palabra.Length;
+        ViewBag.LetrasUsadas = Ahorcado.LetrasUsadas;
+        ViewBag.letrasEncontradas = Ahorcado.PosicionesEncontradas;
+        ViewBag.palabra = Ahorcado.Palabra;
+        ViewBag.intentos = Ahorcado.Intentos;
+       }
+        return View(direccion);
+    }
+                
 }
