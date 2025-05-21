@@ -1,12 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Index";
 }
-
-<div>
+<body>
+<div class = "index">
     <h1> Bienvenidos al ahorcado</h1>
+    <img src="/Imagenes/Ahorcado.png" alt="Ahorcado">
     <h3>Ingrese la palabra a encontrar del jugador 2</h3>
     <form action= "@Url.Action("Juego","Home")" method="post">
-    <input type="password" name="palabraEnviada">
-    <input type="submit" value="Comenzar">
-    </form>
+    <input type="password" name="palabraEnviada" placeholder = "Ingresar palabra">
+    <input class = "comenzar" type="submit" value="Comenzar">
+    </form>                 
 </div>
+</body>

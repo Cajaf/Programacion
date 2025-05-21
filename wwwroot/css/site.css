@@ -13,11 +13,67 @@ body {
   margin: 10px;
   padding: 10px;
 }
+.comenzar
+{
+background-color: turquoise;
+border-radius: 35px;
+border: 3px solid black;
+padding: 2%;
 
 
-footer {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+}
+
+div{
+  background-color: lightslategray;
+  display: inline-block;
+}
+.index
+{
+  margin-left: 27%;
+  margin-right: 10%;
+  font-size: 230%;
+  border-radius: 88px;
+}
+
+img
+{
+  height: 60%;
+  width: 60%;
+  margin-left: 18%;
+}
+
+.juego2{
+  margin-top: 5%;
+}
+body
+{
+  background-color: navy;
+}
+form
+{
+  margin-left: 23%;
+  margin-bottom: 5%;
+}
+a{background-color: turquoise;
+  border-radius: 35px;
+  padding: 0.6%;
+  border: 3px solid black;
+  text-decoration: none;
+}
+.juego
+{
+  margin-left: 36%;
+  margin-right: 10%;
+  font-size: 150%;
+  border-radius: 60px;
+
+}
+h2
+{
+  margin-left: 2%;
+}
+
+.Arriesgar{
+  border-radius: 30px;
+  margin-top: 1%;
 }

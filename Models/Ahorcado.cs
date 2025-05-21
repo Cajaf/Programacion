@@ -76,9 +76,11 @@ return listaVerificacion;
 }
 static public bool ArriesgarPalabra(string palabraArriesgada)
 {
-palabraArriesgada.ToLower();
+
+
 bool ganaste = false;
 
+palabraArriesgada = palabraArriesgada.ToLower();
 if(palabraArriesgada == Palabra)
 {
     ganaste = true;

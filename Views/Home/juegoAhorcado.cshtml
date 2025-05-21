@@ -1,6 +1,7 @@
  
-
- <h1>
+<div class = "juego">
+ <img src="/Imagenes/Ahorcado.png" alt="Ahorcado" class = "juego2">
+ <h2>
  @for (int i = 0; i < ViewBag.Largo;i++)
  {
 
@@ -14,26 +15,26 @@
     }
     @Html.Raw(" ")
  }
- </h1>
+ </h2>
 
- <h1>Letras Usadas</h1>
- <h1>
+ <h2>Letras Usadas</h2>
+ <h2>
  @foreach(char item in @ViewBag.LetrasUsadas)
  {
     @Html.Raw(item + " ");
  }
- </h1>
- <h1>Intentos @ViewBag.intentos</h1>
+ </h2>
+ <h2>Intentos @ViewBag.intentos</h2>
 
-<h1>Arriesgar letra</h1>
+<h2>Arriesgar letra</h2>
  <form action= "@Url.Action("letra","Home")" method="post">
-<input type="text" name="letraTirada">
-<input type="submit" value="Enviar">
+<input type="text" name="letraTirada" placeholder = "Ingresar letra">
+<input type="submit" value="Enviar" class = "comenzar">
 </form>
-<h1>Arriesgar palabra</h1>
+<h2>Arriesgar palabra</h2>
  <form action= "@Url.Action("palabra","Home")" method="post">
-<input type="text" name="palabraArriesgada">
-<input type="submit" value="Enviar">
+<input type="text" name="palabraArriesgada" placeholder = "Ingresar palabra">
+<input class = "comenzar" type="submit" value="Enviar" >
 </form>
- 
+ </div>
  
