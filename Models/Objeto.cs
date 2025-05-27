@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 
 
-public static class Objetos
+public static class Objeto
 {      public static string convertirObjetoAString<T>(T? obj)
     {
         return JsonConvert.SerializeObject(obj);

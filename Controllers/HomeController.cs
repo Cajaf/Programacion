@@ -22,14 +22,16 @@ public class HomeController : Controller
         string direccion = "Index";
         if(palabraEnviada != null)
         {
-        Ahorcado juego = new Ahorcado();
-        juego.empezarJuego(palabraEnviada);
-        HttpContext.Session.SetString("juego",Objetos.convertirObjetoAString(juego));
-        ViewBag.Largo = Ahorcado.Palabra.Length;
-        ViewBag.LetrasUsadas = Ahorcado.LetrasUsadas;
-        ViewBag.letrasEncontradas = Ahorcado.PosicionesEncontradas;
-        ViewBag.palabra = Ahorcado.Palabra;
-        ViewBag.intentos = Ahorcado.Intentos;
+        Ahorcado Juegos = new Ahorcado();
+        Juegos.empezarJuego(palabraEnviada);
+
+        HttpContext.Session.SetString("juego",Objeto.convertirObjetoAString(Juegos));
+
+        ViewBag.Largo = Juegos.Palabra.Length;
+        ViewBag.LetrasUsadas = Juegos.LetrasUsadas;
+        ViewBag.letrasEncontradas = Juegos.PosicionesEncontradas;
+        ViewBag.palabra = Juegos.Palabra;
+        ViewBag.intentos = Juegos.Intentos;
         direccion = "juegoAhorcado";
         }
         return View(direccion);
@@ -37,36 +39,38 @@ public class HomeController : Controller
 
     public IActionResult letra(string letraTirada)
     {
+        string Juegostring  = HttpContext.Session.GetString("juego");  
+        Ahorcado Juegos = Objeto.convertirStringAObjeto<Ahorcado>(Juegostring);
         if(letraTirada != null)
         {
-            Juego = HttpContexto.Session.GetString("juego");
-            Juego = Objeto.
-            Juego.aumentarIntentos(letraTirada);
+            Juegos.aumentarIntentos(letraTirada);
             
         }
-        ViewBag.Largo = Juego.Palabra.Length;
-        ViewBag.LetrasUsadas = Juego.LetrasUsadas;
-        ViewBag.letrasEncontradas = Juego.PosicionesEncontradas;
-        ViewBag.palabra = Juego.Palabra;
-        ViewBag.intentos = Juego.Intentos;
-        HttpContext.Session.SetString("juego",Objeto.convertirObjetoAString(juego));
+        ViewBag.Largo = Juegos.Palabra.Length;
+        ViewBag.LetrasUsadas = Juegos.LetrasUsadas;
+        ViewBag.letrasEncontradas = Juegos.PosicionesEncontradas;
+        ViewBag.palabra = Juegos.Palabra;
+        ViewBag.intentos = Juegos.Intentos;
+        HttpContext.Session.SetString("juego",Objeto.convertirObjetoAString(Juegos));
         return View("juegoAhorcado");
     }
     public IActionResult palabra(string palabraArriesgada)
     {
         string direccion = "juegoAhorcado";
-        Juego = HttpContexto.Session.GetString("juego");
-       if(Juego.ArriesgarPalabra(palabraArriesgada))
+        string Juegostring = HttpContext.Session.GetString("juego");
+        Ahorcado Juegos = Objeto.convertirStringAObjeto<Ahorcado>(Juegostring);
+       if(Juegos.ArriesgarPalabra(palabraArriesgada))
        {
             direccion = "Arriesgar";
-            ViewBag.palabra = Ahorcado.Palabra;
+            ViewBag.palabra = Juegos.Palabra;
        }else{
-        ViewBag.Largo = Ahorcado.Palabra.Length;
-        ViewBag.LetrasUsadas = Ahorcado.LetrasUsadas;
-        ViewBag.letrasEncontradas = Ahorcado.PosicionesEncontradas;
-        ViewBag.palabra = Ahorcado.Palabra;
-        ViewBag.intentos = Ahorcado.Intentos;
+        ViewBag.Largo = Juegos.Palabra.Length;
+        ViewBag.LetrasUsadas = Juegos.LetrasUsadas;
+        ViewBag.letrasEncontradas = Juegos.PosicionesEncontradas;
+        ViewBag.palabra = Juegos.Palabra;
+        ViewBag.intentos = Juegos.Intentos;
        }
+       HttpContext.Session.SetString("juego",Objeto.convertirObjetoAString(Juegos));
         return View(direccion);
     }
                 
