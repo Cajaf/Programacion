@@ -1,11 +1,11 @@
-public static class Ahorcado
+public class Ahorcado
 {
-public static string Palabra {get;private set;}
-public static int Intentos{get;private set;}
-public static bool[] PosicionesEncontradas{get;private set;}
-public static List<char> LetrasUsadas{get;private set;}
-public static bool Vivo {get;private set;}
-static public void empezarJuego(string nomPalabra)
+public string Palabra {get;private set;}
+public int Intentos{get;private set;}
+public bool[] PosicionesEncontradas{get;private set;}
+public List<char> LetrasUsadas{get;private set;}
+public bool Vivo {get;private set;}
+public void empezarJuego(string nomPalabra)
 {
     Intentos = 0;
     nomPalabra = nomPalabra.ToLower();
@@ -19,7 +19,7 @@ LetrasUsadas = new List<char>();
 Vivo = true;
 }
 
-static public void aumentarIntentos(string letra)
+public void aumentarIntentos(string letra)
 {
     if(letra.Length == 1)
     {
@@ -44,7 +44,7 @@ static public void aumentarIntentos(string letra)
     }
 } 
 
-static public bool buscarLetra(char letra)
+public bool buscarLetra(char letra)
 {
 letra = char.ToLower(letra);
 bool verificacion = true;
@@ -58,7 +58,7 @@ foreach(char item in LetrasUsadas)
 return verificacion;
 
 }
-static public List<int> buscarLetraEnPalabra(char letra)
+public List<int> buscarLetraEnPalabra(char letra)
 {
 int contador = 0;
 letra = char.ToLower(letra);
@@ -74,7 +74,7 @@ foreach(char item in Palabra)
 }
 return listaVerificacion;
 }
-static public bool ArriesgarPalabra(string palabraArriesgada)
+public bool ArriesgarPalabra(string palabraArriesgada)
 {
 
 

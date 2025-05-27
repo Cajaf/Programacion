@@ -22,7 +22,9 @@ public class HomeController : Controller
         string direccion = "Index";
         if(palabraEnviada != null)
         {
-            Ahorcado.empezarJuego(palabraEnviada);
+        Ahorcado juego = new Ahorcado();
+        juego.empezarJuego(palabraEnviada);
+        HttpContext.Session.SetString("juego",Objetos.convertirObjetoAString(juego));
         ViewBag.Largo = Ahorcado.Palabra.Length;
         ViewBag.LetrasUsadas = Ahorcado.LetrasUsadas;
         ViewBag.letrasEncontradas = Ahorcado.PosicionesEncontradas;
@@ -37,20 +39,24 @@ public class HomeController : Controller
     {
         if(letraTirada != null)
         {
-        Ahorcado.aumentarIntentos(letraTirada);
+            Juego = HttpContexto.Session.GetString("juego");
+            Juego = Objeto.
+            Juego.aumentarIntentos(letraTirada);
+            
         }
-        ViewBag.Largo = Ahorcado.Palabra.Length;
-        ViewBag.LetrasUsadas = Ahorcado.LetrasUsadas;
-        ViewBag.letrasEncontradas = Ahorcado.PosicionesEncontradas;
-        ViewBag.palabra = Ahorcado.Palabra;
-        ViewBag.intentos = Ahorcado.Intentos;
-        
+        ViewBag.Largo = Juego.Palabra.Length;
+        ViewBag.LetrasUsadas = Juego.LetrasUsadas;
+        ViewBag.letrasEncontradas = Juego.PosicionesEncontradas;
+        ViewBag.palabra = Juego.Palabra;
+        ViewBag.intentos = Juego.Intentos;
+        HttpContext.Session.SetString("juego",Objeto.convertirObjetoAString(juego));
         return View("juegoAhorcado");
     }
     public IActionResult palabra(string palabraArriesgada)
     {
         string direccion = "juegoAhorcado";
-       if(Ahorcado.ArriesgarPalabra(palabraArriesgada))
+        Juego = HttpContexto.Session.GetString("juego");
+       if(Juego.ArriesgarPalabra(palabraArriesgada))
        {
             direccion = "Arriesgar";
             ViewBag.palabra = Ahorcado.Palabra;
